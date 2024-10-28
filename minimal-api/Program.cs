@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Http.HttpResults;
+using MinimalApi.DTOs;
 
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
@@ -13,9 +14,3 @@ app.MapPost("/login", (LoginDTO loginDTO) => {
 });
 
 app.Run();
-
-public class LoginDTO
-{
-    public string Email { get; set; } = default!;
-    public string Senha { get; set; } = default!;
-}
