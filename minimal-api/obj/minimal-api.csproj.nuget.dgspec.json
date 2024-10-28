@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\VSCode\\estudos\\DIO\\Desafios\\minimal-api-desafio\\minimal-api\\minimal-api.csproj": {}
+    "d:\\VSCode\\estudos\\DIO\\Desafios\\minimal-api-desafio\\minimal-api\\minimal-api.csproj": {}
   },
   "projects": {
-    "D:\\VSCode\\estudos\\DIO\\Desafios\\minimal-api-desafio\\minimal-api\\minimal-api.csproj": {
+    "d:\\VSCode\\estudos\\DIO\\Desafios\\minimal-api-desafio\\minimal-api\\minimal-api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\VSCode\\estudos\\DIO\\Desafios\\minimal-api-desafio\\minimal-api\\minimal-api.csproj",
+        "projectUniqueName": "d:\\VSCode\\estudos\\DIO\\Desafios\\minimal-api-desafio\\minimal-api\\minimal-api.csproj",
         "projectName": "minimal-api",
-        "projectPath": "D:\\VSCode\\estudos\\DIO\\Desafios\\minimal-api-desafio\\minimal-api\\minimal-api.csproj",
+        "projectPath": "d:\\VSCode\\estudos\\DIO\\Desafios\\minimal-api-desafio\\minimal-api\\minimal-api.csproj",
         "packagesPath": "C:\\Users\\crisn\\.nuget\\packages\\",
-        "outputPath": "D:\\VSCode\\estudos\\DIO\\Desafios\\minimal-api-desafio\\minimal-api\\obj\\",
+        "outputPath": "d:\\VSCode\\estudos\\DIO\\Desafios\\minimal-api-desafio\\minimal-api\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\crisn\\AppData\\Roaming\\NuGet\\NuGet.Config"

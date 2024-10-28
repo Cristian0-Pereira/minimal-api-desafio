@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Http.HttpResults;
 var builder = WebApplication.CreateBuilder(args);
 var app = builder.Build();
 
-app.MapGet("/", () => "Hello Cristiano Pereira!!!");
+app.MapGet("/", () => "Hello Cristiano!!!");
 
 app.MapPost("/login", (LoginDTO loginDTO) => {
     if (loginDTO.Email == "adm@teste.com" && loginDTO.Senha == "123456") 
