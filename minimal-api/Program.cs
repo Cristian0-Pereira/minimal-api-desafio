@@ -1,8 +1,10 @@
 using Microsoft.EntityFrameworkCore;
-using minimal_api.Infrastructure.Db;
-using MinimalApi.DTOs;
+using MinimalAPI.Infrastructure.Db;
+using MinimalAPI.DTOs;
 
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddScoped<IAdministradorServico, AdministradorServico>();
 
 builder.Services.AddDbContext<DbContexto>(options => {
     options.UseMySql(
@@ -15,8 +17,8 @@ var app = builder.Build();
 
 app.MapGet("/", () => "Hello Cristiano!!!");
 
-app.MapPost("/login", (LoginDTO loginDTO) => {
-    if (loginDTO.Email == "adm@teste.com" && loginDTO.Senha == "123456") 
+app.MapPost("/login", ([FromBody] LoginDTO loginDTO, IAdministradorServico administradorServico) => {
+    if (administradorServico.Login(loginDTO) != null) 
         return Results.Ok("Login com sucesso!");
     else
         return Results.Unauthorized();
@@ -36,11 +38,14 @@ app.Run();
 //         return Results.Unauthorized();
 // });
 
-// C:\xampp\mysql\bin\mysql -u root -p
 
-// Validando admin com login 
-
-// Abrir o xampp - startar o apache e o mysql
-// Abrir o Post
 // Abrir o Docker
+// Abrir o Post
+// Abrir o xampp - startar o apache e o mysql
+// no terminal
+// C:\xampp\mysql\bin\mysql -u root -p
+// para poder entrar no mysql pelo vscode
 // Verificar as conexões antes de iniciar os estudos
+
+//   \! cls - para limpar a tela no mysql
+
