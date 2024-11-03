@@ -1,7 +1,7 @@
-using MinimalAPI.Domains.Entities;
-using MinimalAPI.Domains.Interfaces;
-using MinimalAPI.DTOs;
+using minimal_api.Domains.Entities;
+using MinimalApi.DTOs;
 using MinimalAPI.Infrastructure.Db;
+using MinimalAPI.Domains.Interfaces;
 
 namespace MinimalAPI.Domains.Services;
 
@@ -13,7 +13,7 @@ public class AdministradorServico : IAdministradorServico
     {
         _contexto = contexto;
     }
-    public Administador? Login(LoginDTO loginDTO)
+    public Administrador? Login(LoginDTO loginDTO)
     {
         var adm = _contexto.Administradores.Where(a => a.Email == loginDTO.Email && a.Senha == loginDTO.Senha).FirstOrDefault();
         return adm;
