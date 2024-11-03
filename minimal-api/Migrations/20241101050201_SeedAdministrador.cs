@@ -12,8 +12,8 @@ namespace minimal_api.Migrations
         {
             migrationBuilder.InsertData(
                 table: "Administradores",
-                columns: new[] { "Id", "Email", "Perfil", "Senha" },
-                values: new object[] { 1, "Administador@teste.com", "Adm", "123456" });
+                columns: ["Id", "Email", "Perfil", "Senha"],
+                values: [1, "Administador@teste.com", "Adm", "123456"]);
         }
 
         /// <inheritdoc />

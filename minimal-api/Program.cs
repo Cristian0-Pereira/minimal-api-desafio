@@ -1,6 +1,9 @@
 using Microsoft.EntityFrameworkCore;
 using MinimalAPI.Infrastructure.Db;
-using MinimalAPI.DTOs;
+using MinimalAPI.Domains.Interfaces;
+using MinimalAPI.Domains.Services;
+using MinimalApi.DTOs;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -49,3 +52,4 @@ app.Run();
 
 //   \! cls - para limpar a tela no mysql
 
+// * Configurando o Swagger no app

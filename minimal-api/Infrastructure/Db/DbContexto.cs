@@ -1,5 +1,5 @@
 using Microsoft.EntityFrameworkCore;
-using MinimalApi.Domains.Entities;
+using minimal_api.Domains.Entities;
 
 namespace MinimalAPI.Infrastructure.Db
 {
@@ -13,6 +13,8 @@ namespace MinimalAPI.Infrastructure.Db
         }
 
         public DbSet<Administrador> Administradores { get; set; } = default!;
+
+        public DbSet<Car> Cars { get; set; } = default!;
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

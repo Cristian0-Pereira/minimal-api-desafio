@@ -1,9 +1,9 @@
-using.MinimalAPI.Domains.Entities;
-using.MinimalAPI.DTOs;
+using minimal_api.Domains.Entities;
+using MinimalApi.DTOs;
 
 namespace MinimalAPI.Domains.Interfaces;
 
-public insterface IAdministradorServico
+public interface IAdministradorServico
 {
     Administrador? Login(LoginDTO loginDTO);
 }

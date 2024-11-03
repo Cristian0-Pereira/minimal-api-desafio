@@ -9,7 +9,7 @@ public class AdministradorServico : IAdministradorServico
 {
     private readonly DbContexto _contexto;
 
-    public AdministradorServico(DbContexto db)
+    public AdministradorServico(DbContexto contexto)
     {
         _contexto = contexto;
     }
