@@ -21,7 +21,7 @@ namespace MinimalAPI.Infrastructure.Db
             modelBuilder.Entity<Administrador>().HasData(
                 new Administrador {
                     Id = 1,
-                    Email = "Administador@teste.com",
+                    Email = "administador@teste.com",
                     Senha = "123456",
                     Perfil = "Adm"
                 }
