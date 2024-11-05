@@ -15,7 +15,7 @@ public class CarServico : ICarServico
         _contexto = contexto;
     }
 
-    public List<Car> All(int page = 1, string? name = null, string? model = null)
+    public List<Car> All(int? page = 1, string? name = null, string? model = null)
     {
         var query = _contexto.Cars.AsQueryable();
         if(!string.IsNullOrEmpty(name))
@@ -29,7 +29,9 @@ public class CarServico : ICarServico
         }
 
         int pageSize = 10;
-        query = query.Skip((page - 1) * pageSize).Take(pageSize);
+
+        if(page != null)
+            query = query.Skip(((int)page - 1) * pageSize).Take(pageSize);
 
         return query.ToList();
     }

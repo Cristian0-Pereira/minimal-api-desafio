@@ -5,7 +5,7 @@ namespace MinimalAPI.Domains.Interfaces;
 
 public interface ICarServico
 {
-    List<Car> All(int page = 1, string? name = null, string? model = null);
+    List<Car> All(int? page = 1, string? name = null, string? model = null);
 
     Car? SearchFoId(int id);
 
