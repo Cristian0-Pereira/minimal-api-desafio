@@ -7,8 +7,10 @@ using MinimalAPI.Domains.ModelViews;
 using minimal_api.Domains.Entities;
 using MinimalApi.DTOs;
 using MinimalAPI.DTOs;
+using MinimalAPI.Domains.Enuns;
 
 #region Builder
+
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IAdministradorServico, AdministradorServico>();
@@ -32,19 +34,79 @@ var app = builder.Build();
 #endregion
 
 #region Home
+
 app.MapGet("/", () => Results.Redirect("/swagger")).WithTags("Home");
 #endregion
 
 #region Administradores
-app.MapPost("administradores/login", ([FromBody] LoginDTO loginDTO, IAdministradorServico administradorServico) => {
+
+app.MapPost("/administradores/login", ([FromBody] LoginDTO loginDTO, IAdministradorServico administradorServico) => {
     if (administradorServico.Login(loginDTO) != null) 
-        return Results.Ok("Login com sucesso!");
+        return Results.Ok("Login realizado com sucesso!");
     else
         return Results.Unauthorized();
+}).WithTags("Administradores");
+
+app.MapGet("/administradores", ([FromQuery] int? page,  IAdministradorServico administradorServico) => {
+    var adms = new List<AdmModelView>();
+    var administradores = administradorServico.All(page);
+    
+    foreach (var adm in administradores)
+    {
+        adms.Add(new AdmModelView{
+            Id = adm.Id,
+            Email = adm.Email,
+            Perfil =  adm.Perfil
+        });
+    }
+    return Results.Ok(adms);
+}).WithTags("Administradores");
+
+app.MapGet("/Administradores/{id}", ([FromRoute] int id, IAdministradorServico administradorServico) => 
+{
+    var administrador = administradorServico.SearchById(id);
+    if(administrador == null) return Results.NotFound();
+    return Results.Ok(new AdmModelView{
+        Id = administrador.Id,
+        Email = administrador.Email,
+        Perfil =  administrador.Perfil
+    });
+}).WithTags("Administradores");
+
+app.MapPost("/administradores", ([FromBody] AdministradorDTO administradorDTO, IAdministradorServico administradorServico) => {
+    var validation = new ValidationErrors{
+        Messages = new List<string>()
+    };
+
+    if(string.IsNullOrEmpty(administradorDTO.Email))
+        validation.Messages.Add("Email não pode ser vazio");
+    if(string.IsNullOrEmpty(administradorDTO.Senha))
+        validation.Messages.Add("Senha não pode ser vazia");
+    if(administradorDTO.Perfil == null)
+        validation.Messages.Add("Perfil não pode ser vazio");
+
+    if(validation.Messages.Count > 0)
+        return Results.BadRequest(validation);
+
+    var administrador = new Administrador
+    {
+        Email = administradorDTO.Email,
+        Senha = administradorDTO.Senha,
+        Perfil = administradorDTO.Perfil.ToString() ?? Perfil.Editor.ToString(),
+    };
+    administradorServico.Include(administrador);
+
+    return Results.Created($"/administrador/{administrador.Id}", new AdmModelView{
+        Id = administrador.Id,
+        Email = administrador.Email,
+        Perfil =  administrador.Perfil
+    });
+    
 }).WithTags("Administradores");
 #endregion
 
 #region Car
+
 ValidationErrors validDTO(CarDTO carDTO)
 {
     var validation = new ValidationErrors{
@@ -88,14 +150,14 @@ app.MapGet("cars", ([FromQuery] int? page, ICarServico carServico) =>
 
 app.MapGet("cars/{id}", ([FromRoute] int id, ICarServico carServico) => 
 {
-    var car = carServico.SearchFoId(id);
+    var car = carServico.SearchById(id);
     if(car == null) return Results.NotFound();
     return Results.Ok(car);
 }).WithTags("Cars");
 
 app.MapPut("cars/{id}", ([FromRoute] int id, CarDTO carDTO, ICarServico carServico) => 
 {
-    var car = carServico.SearchFoId(id);
+    var car = carServico.SearchById(id);
     if(car == null) return Results.NotFound();
     
     var validation = validDTO(carDTO);
@@ -113,7 +175,7 @@ app.MapPut("cars/{id}", ([FromRoute] int id, CarDTO carDTO, ICarServico carServi
 
 app.MapDelete("cars/{id}", ([FromRoute] int id, ICarServico carServico) => 
 {
-    var car = carServico.SearchFoId(id);
+    var car = carServico.SearchById(id);
     if(car == null) return Results.NotFound();
 
     carServico.Delete(car);
@@ -123,6 +185,7 @@ app.MapDelete("cars/{id}", ([FromRoute] int id, ICarServico carServico) =>
 #endregion
 
 #region App
+
 app.UseSwagger();
 app.UseSwaggerUI();
 
@@ -152,4 +215,4 @@ app.Run();
 
 //   \! cls - para limpar a tela no mysql
 
-// * Criando Endpoints para adm
+// * Configurando Token JWT no projeto

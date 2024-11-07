@@ -103,3 +103,4 @@ D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\
 D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerGen.dll
 D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\obj\Debug\net8.0\minimal-api.MvcApplicationPartsAssemblyInfo.cs
+D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\Newtonsoft.Json.dll

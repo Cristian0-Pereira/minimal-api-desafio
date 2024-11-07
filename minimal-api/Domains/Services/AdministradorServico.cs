@@ -13,9 +13,34 @@ public class AdministradorServico : IAdministradorServico
     {
         _contexto = contexto;
     }
+
+    public Administrador? SearchById(int id)
+    {
+        return _contexto.Administradores.FirstOrDefault(c => c.Id == id);
+    }
+
+    public Administrador Include(Administrador administrador)
+    {
+        _contexto.Administradores.Add(administrador);
+        _contexto.SaveChanges();
+
+        return administrador;
+    }
+
     public Administrador? Login(LoginDTO loginDTO)
     {
-        var adm = _contexto.Administradores.Where(a => a.Email == loginDTO.Email && a.Senha == loginDTO.Senha).FirstOrDefault();
-        return adm;
+        return _contexto.Administradores.FirstOrDefault(a => a.Email == loginDTO.Email && a.Senha == loginDTO.Senha);
+    }
+
+    public List<Administrador> All(int? page)
+    {
+        var query = _contexto.Administradores.AsQueryable();
+
+        int pageSize = 10;
+
+        if(page.HasValue && page > 0)
+            query = query.Skip(((int)page - 1) * pageSize).Take(pageSize);
+
+        return query.ToList();
     }
 }

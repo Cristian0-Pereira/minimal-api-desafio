@@ -30,7 +30,7 @@ public class CarServico : ICarServico
 
         int pageSize = 10;
 
-        if(page != null)
+        if(page.HasValue && page > 0)
             query = query.Skip(((int)page - 1) * pageSize).Take(pageSize);
 
         return query.ToList();
@@ -48,7 +48,7 @@ public class CarServico : ICarServico
         _contexto.SaveChanges();
     }
 
-    public Car? SearchFoId(int id)
+    public Car? SearchById(int id)
     {
         return _contexto.Cars.Where(c => c.Id == id).FirstOrDefault();
     }
