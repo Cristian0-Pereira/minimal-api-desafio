@@ -104,3 +104,11 @@ D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\
 D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\Swashbuckle.AspNetCore.SwaggerUI.dll
 D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\obj\Debug\net8.0\minimal-api.MvcApplicationPartsAssemblyInfo.cs
 D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\Newtonsoft.Json.dll
+D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\Microsoft.AspNetCore.Authentication.JwtBearer.dll
+D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\Microsoft.IdentityModel.Abstractions.dll
+D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\Microsoft.IdentityModel.JsonWebTokens.dll
+D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\Microsoft.IdentityModel.Logging.dll
+D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.dll
+D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
+D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\Microsoft.IdentityModel.Tokens.dll
+D:\VSCode\estudos\DIO\Desafios\minimal-api-desafio\minimal-api\bin\Debug\net8.0\System.IdentityModel.Tokens.Jwt.dll

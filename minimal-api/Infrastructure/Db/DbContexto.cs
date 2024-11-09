@@ -21,7 +21,7 @@ namespace MinimalAPI.Infrastructure.Db
             modelBuilder.Entity<Administrador>().HasData(
                 new Administrador {
                     Id = 1,
-                    Email = "administador@teste.com",
+                    Email = "administrador@teste.com",
                     Senha = "123456",
                     Perfil = "Adm"
                 }
@@ -32,7 +32,7 @@ namespace MinimalAPI.Infrastructure.Db
         {
             if(!optionsBuilder.IsConfigured)
             {
-                var stringConexao = _configuracaoAppSettings.GetConnectionString("mysql")?.ToString();
+                var stringConexao = _configuracaoAppSettings.GetConnectionString("MySql")?.ToString();
                 
                 if(!string.IsNullOrEmpty(stringConexao))
                 {
