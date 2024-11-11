@@ -1,3 +1,4 @@
+using minimal_api;
 using minimal_api.Domains.Entities;
 
 namespace Test.Domains.Entities;

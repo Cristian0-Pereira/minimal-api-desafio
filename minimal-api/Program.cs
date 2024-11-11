@@ -326,4 +326,4 @@ app.Run();
 
 //   \! cls - para limpar a tela no MySql
 
-// * Criando autorização com perfil de Adm e Editor
+// * 
