@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "gOTJtUfYVzE=",
+  "dgSpecHash": "CFxWwYoQMsI=",
   "success": true,
   "projectFilePath": "D:\\VSCode\\estudos\\DIO\\Desafios\\minimal-api-desafio\\minimal-api\\minimal-api.csproj",
   "expectedPackageFiles": [
@@ -37,6 +37,7 @@
     "C:\\Users\\crisn\\.nuget\\packages\\microsoft.identitymodel.tokens\\7.1.2\\microsoft.identitymodel.tokens.7.1.2.nupkg.sha512",
     "C:\\Users\\crisn\\.nuget\\packages\\microsoft.openapi\\1.6.14\\microsoft.openapi.1.6.14.nupkg.sha512",
     "C:\\Users\\crisn\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\crisn\\.nuget\\packages\\mstest.testframework\\3.6.2\\mstest.testframework.3.6.2.nupkg.sha512",
     "C:\\Users\\crisn\\.nuget\\packages\\mysqlconnector\\2.3.5\\mysqlconnector.2.3.5.nupkg.sha512",
     "C:\\Users\\crisn\\.nuget\\packages\\newtonsoft.json\\13.0.3\\newtonsoft.json.13.0.3.nupkg.sha512",
     "C:\\Users\\crisn\\.nuget\\packages\\pomelo.entityframeworkcore.mysql\\8.0.2\\pomelo.entityframeworkcore.mysql.8.0.2.nupkg.sha512",
