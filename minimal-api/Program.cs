@@ -14,6 +14,7 @@ using System.Text;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Authorization;
 
 #region Builder
 
@@ -106,6 +107,7 @@ string GerarTokenJwt(Administrador administrador){
     {
         new("Email", administrador.Email),
         new("Perfil", administrador.Perfil),
+        new(ClaimTypes.Role, administrador.Perfil),
         new Claim(JwtRegisteredClaimNames.Aud, "minimal-api-audiencia"),
     };
 
@@ -135,8 +137,7 @@ app.MapPost("/administradores/login", ([FromBody] LoginDTO loginDTO, IAdministra
 
 app.MapGet("/administradores", ([FromQuery] int? page,  IAdministradorServico administradorServico) => {
     var adms = new List<AdmModelView>();
-    var administradores = administradorServico.All(page);
-    
+    var administradores = administradorServico.All(page);    
     foreach (var adm in administradores)
     {
         adms.Add(new AdmModelView{
@@ -146,7 +147,10 @@ app.MapGet("/administradores", ([FromQuery] int? page,  IAdministradorServico ad
         });
     }
     return Results.Ok(adms);
-}).RequireAuthorization().WithTags("Administradores");
+})
+.RequireAuthorization()
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Adm" })
+.WithTags("Administradores");
 
 app.MapGet("/Administradores/{id}", ([FromRoute] int id, IAdministradorServico administradorServico) => 
 {
@@ -157,7 +161,10 @@ app.MapGet("/Administradores/{id}", ([FromRoute] int id, IAdministradorServico a
         Email = administrador.Email,
         Perfil =  administrador.Perfil
     });
-}).RequireAuthorization().WithTags("Administradores");
+})
+.RequireAuthorization()
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Adm" })
+.WithTags("Administradores");
 
 app.MapPost("/administradores", ([FromBody] AdministradorDTO administradorDTO, IAdministradorServico administradorServico) => {
     var validation = new ValidationErrors{
@@ -188,7 +195,10 @@ app.MapPost("/administradores", ([FromBody] AdministradorDTO administradorDTO, I
         Perfil =  administrador.Perfil
     });
     
-}).RequireAuthorization().WithTags("Administradores");
+})
+.RequireAuthorization()
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Adm" })
+.WithTags("Administradores");
 #endregion
 
 #region Car
@@ -225,7 +235,10 @@ app.MapPost("cars", ([FromBody] CarDTO carDTO, ICarServico carServico) =>
     carServico.Include(car);
 
     return Results.Created($"/car/{car.Id}", car);
-}).RequireAuthorization().WithTags("Cars");
+})
+.RequireAuthorization()
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Adm Editor" })
+.WithTags("Cars");
 
 app.MapGet("cars", ([FromQuery] int? page, ICarServico carServico) => 
 {
@@ -239,7 +252,10 @@ app.MapGet("cars/{id}", ([FromRoute] int id, ICarServico carServico) =>
     var car = carServico.SearchById(id);
     if(car == null) return Results.NotFound();
     return Results.Ok(car);
-}).RequireAuthorization().WithTags("Cars");
+})
+.RequireAuthorization()
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Adm, Editor" })
+.WithTags("Cars");
 
 app.MapPut("cars/{id}", ([FromRoute] int id, CarDTO carDTO, ICarServico carServico) => 
 {
@@ -257,7 +273,10 @@ app.MapPut("cars/{id}", ([FromRoute] int id, CarDTO carDTO, ICarServico carServi
     carServico.Update(car);
 
     return Results.Ok(car);
-}).RequireAuthorization().WithTags("Cars");
+})
+.RequireAuthorization()
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Adm" })
+.WithTags("Cars");
 
 app.MapDelete("cars/{id}", ([FromRoute] int id, ICarServico carServico) => 
 {
@@ -267,7 +286,10 @@ app.MapDelete("cars/{id}", ([FromRoute] int id, ICarServico carServico) =>
     carServico.Delete(car);
 
     return Results.NoContent();
-}).RequireAuthorization().WithTags("Cars");
+})
+.RequireAuthorization()
+.RequireAuthorization(new AuthorizeAttribute { Roles = "Adm" })
+.WithTags("Cars");
 #endregion
 
 #region App
