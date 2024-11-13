@@ -302,28 +302,3 @@ app.UseAuthorization();
 
 app.Run();
 #endregion
-
-// GPT exemplo
-
-// app.MapPost("/login", async (LoginDTO loginDTO, DbContexto db) => {
-//     var administrador = await db.Administradores
-//         .FirstOrDefaultAsync(a => a.Email == loginDTO.Email && a.Senha == loginDTO.Senha);
-    
-//     if (administrador != null) 
-//         return Results.Ok("Login com sucesso!");
-//     else
-//         return Results.Unauthorized();
-// });
-
-
-// Abrir o Docker
-// Abrir o Post
-// Abrir o xampp - startar o apache e o MySql
-// no terminal
-// C:\xampp\MySql\bin\MySql -u root -p
-// para poder entrar no MySql pelo vscode
-// Verificar as conexões antes de iniciar os estudos
-
-//   \! cls - para limpar a tela no MySql
-
-// * 
